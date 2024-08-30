@@ -1,0 +1,201 @@
+:root {
+    --background: #bebfcd;
+    --inactiveHeader: #696971;
+    --panelHeader: #2d2e2e;
+    --tabGroupHeaderBackground: #0f0f0f;
+    --dockTarget: #cccc8b;
+}
+
+/* ======================================================================================================== */
+/* TAB GROUP
+/* ======================================================================================================== */
+
+div.tabGroup {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+
+    > div.content {
+        flex: 1;
+        box-sizing: border-box;
+        padding: 10px;
+        background: var(--background);
+        height: 100%;
+    }
+
+    > div.header {
+        background: var(--tabGroupHeaderBackground);
+        color: white;
+        padding: 2px 2px 0 2px;
+        display: flex;
+
+        > .headerItem {
+            background: var(--inactiveHeader);
+            color: black;
+            padding: 2px 5px 1px 5px;
+            border-radius: 5px 5px 0 0;
+            border: 1px solid black;
+            border-bottom: none;
+            margin-right: 3px;
+            cursor: pointer;
+            display: flex;
+
+            &.active {
+                background: var(--background);
+            }
+
+            > button {
+                background: none;
+                border: none;
+                padding: 0 0 0 10px;
+                cursor: pointer;
+                font-weight: bold;
+                font-size: 60%;
+            }
+
+            > button:hover {
+                color: darkred;
+            }
+        }
+    }
+}
+
+/* ======================================================================================================== */
+/* DOCKED PANEL
+/* ======================================================================================================== */
+
+div.dockedPanel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* This is necessary to position the docking target properly */
+
+    > div.content {
+        width: 100%;
+        height: 100%;
+    }
+
+    &.multi {
+        > div.content {
+            display: flex;
+
+            > div.dockedPanel > div.header {
+                display: flex !important;
+            }
+        }
+
+        > div.header {
+            display: none;
+        }
+
+        &.vertical > div.content {
+            display: flex;
+            flex-direction: column;
+
+            > div {
+                height: 50%;
+
+                &:first-child {
+                    border-bottom: 1px solid black;
+                }
+            }
+        }
+
+        &.horizontal > div.content > div {
+            width: 50%;
+
+            &:first-child {
+                border-right: 1px solid black;
+            }
+        }
+    }
+}
+
+div.dockedPanel,
+div.floatingPanel {
+    > div.header {
+        cursor: grab;
+        background: var(--panelHeader);
+        color: white;
+        border-bottom: 1px solid black;
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+
+        > span {
+            padding: 3px 7px;
+        }
+
+        > div.buttons {
+            padding: 1px;
+
+            > button {
+                background: var(--background);
+                font-weight: 400;
+                border: none;
+                border-radius: 5px;
+                height: 100%;
+                font-size: 70%;
+                display: block;
+
+                &:hover {
+                    color: darkred;
+                }
+            }
+        }
+    }
+}
+
+/* ======================================================================================================== */
+/* DOCKED PANEL - DOCK TARGET
+/* ======================================================================================================== */
+
+/* Docking helper */
+div.dockTarget {
+    z-index: 1000000000;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    opacity: 70%;
+    color: var(--dockTarget);
+    display: none;
+
+    > div {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        font-size: 250%;
+        line-height: 0.6;
+
+        &.panelHover {
+            text-shadow: 0 0 8px red;
+        }
+    }
+}
+
+/* ======================================================================================================== */
+/* FLOATING PANEL
+/* ======================================================================================================== */
+
+div.floatingPanel {
+    position: absolute;
+    border: 3px solid black;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    > div.content {
+        width: 100%;
+        flex-grow: 1;
+    }
+}

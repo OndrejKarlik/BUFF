@@ -1,0 +1,106 @@
+---
+IncludeCategories:
+    - Regex:           '^"Lib/UndefIntrusiveMacros.h"$'
+      Priority:        9999
+
+    - Regex:           '^"Lib/'
+      Priority:        90
+
+    - Regex:           '^"(LibSdl|LibWindows|LibEmscripten)/'
+      Priority:        80
+
+    - Regex:           '^"(LibImgui|LibUltralight)/'
+      Priority:        79
+
+    - Regex:           '^"'
+      Priority:        70
+
+    - Regex:           '^<'
+      Priority:        1000
+
+AccessModifierOffset:                      -4
+AlignAfterOpenBracket:                     Align
+AlignArrayOfStructures:                    Left
+AlignConsecutiveAssignments:               true
+AlignConsecutiveBitFields:                 true
+AlignConsecutiveDeclarations:              true
+AlignConsecutiveMacros:                    true
+AlignEscapedNewlines:                      Right
+AlignOperands:                             Align
+AlignTrailingComments:                     true
+AllowAllArgumentsOnNextLine:               false
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortBlocksOnASingleLine:             Never
+AllowShortCaseLabelsOnASingleLine:         false
+AllowShortEnumsOnASingleLine:              true
+AllowShortFunctionsOnASingleLine:          Empty
+AllowShortIfStatementsOnASingleLine:       Never
+AllowShortLambdasOnASingleLine:            All
+AllowShortLoopsOnASingleLine:              false
+AlwaysBreakAfterReturnType:                None
+AlwaysBreakBeforeMultilineStrings:         false
+AlwaysBreakTemplateDeclarations:           Yes
+
+BinPackArguments:               false
+BinPackParameters:              false
+BitFieldColonSpacing:           Both
+BreakBeforeBinaryOperators:     None
+BreakBeforeBraces:              Attach
+# BreakBeforeConceptDeclarations: true
+BreakBeforeTernaryOperators:    true
+BreakConstructorInitializers:   BeforeComma
+BreakInheritanceList:           BeforeComma
+BreakStringLiterals:            true
+
+ColumnLimit: 110
+CommentPragmas: '^ ReSharper disable'
+
+CompactNamespaces:                              true
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+Cpp11BracedListStyle:                           true
+
+IncludeBlocks:      Merge
+IndentPPDirectives: AfterHash
+IndentWidth:        4
+InsertNewlineAtEOF: true
+
+FixNamespaceComments: true
+ShortNamespaceLines:  15
+
+PackConstructorInitializers: Never
+PenaltyReturnTypeOnItsOwnLine: 9999
+PenaltyExcessCharacter: 9999
+PointerAlignment: Left
+
+ReflowComments: true
+RemoveParentheses: Leave # Unfortunately removes stuff that we need e.g. CHECK((a || b)) in unit tests
+RemoveSemicolon: true
+RequiresClausePosition: SingleLine
+
+SpacesInLineCommentPrefix:
+  Minimum: 1
+  Maximum: -1
+StatementMacros:
+  - 'BUFF_ASSERT'
+  - 'BUFF_CHECKED_CALL'
+SortIncludes: CaseInsensitive
+SpaceBeforeCpp11BracedList: true
+
+---
+
+---
+Language: JavaScript
+Cpp11BracedListStyle: false
+InsertTrailingCommas: Wrapped
+JavaScriptQuotes: Double
+SpaceBeforeJsonColon: false
+SpacesInContainerLiterals: false
+---
+
+
+
+
+
+
+
+

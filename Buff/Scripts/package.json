@@ -1,0 +1,12 @@
+{
+    "name": "scripts",
+    "version": "0.0.0",
+    "description": "Scripts",
+    "main": "Buff.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc --build .",
+        "clean": "tsc --build --clean"
+    },
+    "devDependencies": {}
+}

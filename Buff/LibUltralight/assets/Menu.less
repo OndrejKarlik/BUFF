@@ -1,0 +1,58 @@
+/* Root menu + nested */
+
+ul.menu,
+ul.menu * {
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: grab;
+}
+
+ul.menu {
+    display: block;
+
+    li {
+        position: relative;
+        transition: background-color 0.3s ease-out;
+        padding: 5px 7px;
+
+        &:hover {
+            background-color: #d0d0d0;
+            transition: background-color 0.3s ease-out;
+        }
+    }
+}
+
+ul.menu,
+ul.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #b0b0b0;
+    white-space: nowrap;
+}
+
+/*  Root menu only */
+
+ul.menu > li {
+    display: inline-block;
+}
+
+/*  Nested menus only  */
+
+ul.menu ul {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1000000000;
+    transform: rotateX(-90deg);
+    transform-origin: top left;
+    opacity: 0;
+    top: 100%;
+    left: 0;
+    transition: 0.15s all ease-out;
+}
+
+ul.menu li:hover > ul {
+    opacity: 1;
+    transform: rotateX(0);
+    visibility: visible;
+}

@@ -1,0 +1,38 @@
+
+// Default configuration
+#define DEBUG
+#define _DEBUG
+
+// Our configuration
+#define BUFF_DEBUG 1
+#define BUFF_RELEASE 0
+
+// Our constructs
+#define BUFF_NAMESPACE_BEGIN namespace Buff {
+#define BUFF_NAMESPACE_END   }
+#define BUFF_ASSERT(condition, ...) if (!(condition)) { throw std::exception(); }
+#define BUFF_CHECKED_CALL(expected, ...) BUFF_ASSERT(expected == __VA_ARGS__)
+#define BUFF_STOP throw std::exception();
+#define BUFF_UNUSED(...)
+#define BUFF_DISABLE_MSVC_WARNING_BEGIN(...)
+#define BUFF_DISABLE_MSVC_WARNING_END()
+#define BUFF_DISABLE_CLANG_WARNING_BEGIN(warningString)
+#define BUFF_DISABLE_CLANG_WARNING_END()
+
+// 3rd party - imgui/SDL
+#define SDL_VERSION_ATLEAST(x, y, z) 1
+#define TARGET_OS_IOS 0
+#define IMGUI_API
+#define IMGUI_IMPL_API
+#define FREETYPE_MAJOR 2
+#define FREETYPE_MINOR 14
+
+// WIN32 API
+#define NTAPI __stdcall
+#define NTSYSAPI __declspec(dllimport)
+#define CALLBACK    __stdcall
+#define APIENTRY __stdcall
+
+
+// Tests
+#define TEST_CASE(name) static void test_dummy()

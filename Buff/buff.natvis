@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+    <Type Name="Buff::String">
+        <DisplayString>[{(mImpl.mImpl._Mypair._Myval2._Mylast == mImpl.mImpl._Mypair._Myval2._Myfirst) ? 0 : mImpl.mImpl._Mypair._Myval2._Mylast-mImpl.mImpl._Mypair._Myval2._Myfirst-1}] {mImpl.mImpl._Mypair._Myval2._Myfirst, s}</DisplayString>
+    </Type>
+
+    <Type Name="Buff::SharedPtr&lt;*&gt;">
+        <DisplayString>{mImpl}</DisplayString>
+    </Type>
+
+    <Type Name="Buff::WeakPtr&lt;*&gt;">
+        <DisplayString>{mImpl}</DisplayString>
+    </Type>
+
+    <Type Name="Buff::AutoPtr&lt;*&gt;">
+        <DisplayString>{*mImpl._Mypair._Myval2}</DisplayString>
+        <Expand>
+            <Item Name="[ptr]">mImpl._Mypair._Myval2</Item>
+        </Expand>
+    </Type>
+
+    <Type Name="Buff::StaticArray&lt;*&gt;">
+        <DisplayString>Static Array with {$T2} items</DisplayString>
+        <Expand>
+            <Item Name="[size]">$T2</Item>
+            <ArrayItems>
+                <Size>$T2</Size>
+                <ValuePointer>mImpl._Elems</ValuePointer>
+            </ArrayItems>
+        </Expand>
+    </Type>
+
+
+    <Type Name="Buff::Rgb">
+        <DisplayString> R = {mData.mImpl[0]}, G = {mData.mImpl[1]}, B = {mData.mImpl[2]} </DisplayString>
+    </Type>
+
+    <Type Name="Buff::ArrayView&lt;*&gt;">
+        <DisplayString>[size] {mSize}</DisplayString>
+        <Expand>
+            <Item Name="[size]">mSize</Item>
+            <ArrayItems>
+                <Size>mSize</Size>
+                <ValuePointer>mData</ValuePointer>
+            </ArrayItems>
+        </Expand>
+    </Type>
+
+    <Type Name="Buff::Array&lt;*&gt;">
+        <DisplayString>{mImpl}</DisplayString>
+        <Expand>
+            <Item Name="[size]">mImpl._Mypair._Myval2._Mylast - mImpl._Mypair._Myval2._Myfirst</Item>
+            <Item Name="[capacity]">(mImpl._Mypair._Myval2._Mylast - mImpl._Mypair._Myval2._Myfirst)</Item>
+            <ArrayItems>
+                <Size>mImpl._Mypair._Myval2._Mylast - mImpl._Mypair._Myval2._Myfirst</Size>
+                <ValuePointer>mImpl._Mypair._Myval2._Myfirst</ValuePointer>
+            </ArrayItems>
+        </Expand>
+    </Type>
+
+    <Type Name="Buff::Array2D&lt;*&gt;">
+        <DisplayString>{mSize}</DisplayString>
+        <Expand>
+            <Item Name="[size]">mSize</Item>
+            <ArrayItems>
+                <Size>mImpl.mImpl._Mypair._Myval2._Mylast - mImpl.mImpl._Mypair._Myval2._Myfirst</Size>
+                <ValuePointer>mImpl.mImpl._Mypair._Myval2._Myfirst</ValuePointer>
+            </ArrayItems>
+        </Expand>
+    </Type>
+
+    <Type Name="Buff::StableArray&lt;*&gt;">
+        <DisplayString Condition="mLastPtr == -1">[EMPTY]</DisplayString>
+        <DisplayString >Size: {mLastPtr * mBatchSize + mList.mImpl._Mypair._Myval2._Myfirst[mLastPtr].mImpl._Mypair._Myval2._Mylast -  mList.mImpl._Mypair._Myval2._Myfirst[mLastPtr].mImpl._Mypair._Myval2._Myfirst}</DisplayString>
+    </Type>
+
+    <Type Name="Buff::Variant&lt;*&gt;">
+        <DisplayString>{mImpl}</DisplayString>
+    </Type>
+
+    <Type Name="Buff::Uninitialized&lt;*&gt;">
+        <DisplayString>[Uninitialized] {*reinterpret_cast&lt;$T1*&gt;(&amp;mDummy)}</DisplayString>
+        <Expand>
+            <Item Name="[Initialized]">*reinterpret_cast&lt;$T1*&gt;(&amp;mDummy)</Item>
+        </Expand>
+    </Type>
+
+    <Type Name="Buff::Duration">
+        <DisplayString>{mImpl}(= {mImpl._MyRep/1000000} miliseconds)</DisplayString>
+    </Type>
+
+
+
+
+
+
+
+
+
+
+    <Type Name="Buff::RuntimeValue">
+        <DisplayString Condition="(mUniqueValue.mImpl._Has_value ? mUniqueValue._Value : mSharedValue.mPtr->value).type == RuntimeValue::Type::IMPLICIT_UNDEFINED" Optional="true">[{mUniqueValue._Has_value ? 0 :  mSharedValue.mPtr->referenceCount} refs] IMPLICIT_UNDEFINED</DisplayString>
+        <DisplayString Condition="(mUniqueValue.mImpl._Has_value ? mUniqueValue._Value : mSharedValue.mPtr->value).type == RuntimeValue::Type::UNDEFINED" Optional="true">[{mUniqueValue._Has_value ? 0 :  mSharedValue.mPtr->referenceCount} refs] UNDEFINED</DisplayString>
+        <DisplayString Condition="(mUniqueValue.mImpl._Has_value ? mUniqueValue._Value : mSharedValue.mPtr->value).type == RuntimeValue::Type::NULLPTR" Optional="true">[{mUniqueValue._Has_value ? 0 :  mSharedValue.mPtr->referenceCount} refs] NULLPTR</DisplayString>
+        <DisplayString Condition="(mUniqueValue.mImpl._Has_value ? mUniqueValue._Value : mSharedValue.mPtr->value).type == RuntimeValue::Type::BOOL" Optional="true">[{mUniqueValue._Has_value ? 0 :  mSharedValue.mPtr->referenceCount} refs] (mUniqueValue.mImpl._Has_value ? mUniqueValue._Value : mSharedValue.mPtr->value).values.mImpl._Head</DisplayString>
+        <DisplayString Condition="(mUniqueValue.mImpl._Has_value ? mUniqueValue._Value : mSharedValue.mPtr->value).type == RuntimeValue::Type::NUMBER" Optional="true">[{mUniqueValue._Has_value ? 0 :  mSharedValue.mPtr->referenceCount} refs] (mUniqueValue.mImpl._Has_value ? mUniqueValue._Value : mSharedValue.mPtr->value).values.mImpl._Tail._Head</DisplayString>
+        <DisplayString Condition="(mUniqueValue.mImpl._Has_value ? mUniqueValue._Value : mSharedValue.mPtr->value).type == RuntimeValue::Type::STRING" Optional="true">[{mUniqueValue._Has_value ? 0 :  mSharedValue.mPtr->referenceCount} refs] (mUniqueValue.mImpl._Has_value ? mUniqueValue._Value : mSharedValue.mPtr->value).values.mImpl._Tail._Tail._Head</DisplayString>
+        <DisplayString>[{mUniqueValue.mImpl._Has_value ? 0 :  mSharedValue.mPtr->referenceCount} refs] {mUniqueValue.mImpl._Has_value ? mUniqueValue.mImpl._Value :  mSharedValue.mPtr->value}</DisplayString>
+
+        <Expand>
+            <Item Name="Impl">mUniqueValue.mImpl._Has_value ? mUniqueValue.mImpl._Value :  mSharedValue.mPtr->value</Item>
+        </Expand>
+    </Type>
+
+
+
+</AutoVisualizer>
